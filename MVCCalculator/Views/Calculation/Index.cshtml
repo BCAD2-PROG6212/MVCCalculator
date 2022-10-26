@@ -1,0 +1,44 @@
+﻿@model MVCCalculator.Models.Calculation
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Calculator</h1>
+    <div class="row align-content-center">
+        <div class="col-md-4">
+            <form asp-action="Index">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="firstValue" class="control-label"></label>
+                    <input asp-for="firstValue" class="form-control" />
+                    <span asp-validation-for="firstValue" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="secondValue" class="control-label"></label>
+                    <input asp-for="secondValue" class="form-control" />
+                    <span asp-validation-for="secondValue" class="text-danger"></span>
+                </div>                
+                <div class="form-group">
+                    <label asp-for="mathOp" class="control-label"></label>
+                    <select asp-for="mathOp" class="form-control">
+                        <option value="0">+</option>
+                        <option value="1">-</option>
+                        <option value="2">*</option>
+                        <option value="3">/</option>
+                    </select>                    
+                    <span asp-validation-for="mathOp" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Calculate" class="btn btn-primary" />
+                </div>
+                @{ 
+                    if (@ViewBag.Result != null) {
+                        @ViewBag.Result;
+                    }
+                }
+            </form>
+        </div>
+    </div>
+</div>
